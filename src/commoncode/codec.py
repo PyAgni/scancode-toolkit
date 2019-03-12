@@ -62,7 +62,7 @@ MAXLEN = len(to_base_n(pow(2, 32) - 1, 85))
 def to_base85(num):
     """
     Convert `num` number to a string representing this number in base 85,
-    padded as needed.
+    padding is done as needed.
 
     The character set to encode 85 base85 digits is defined to be:
          '0'..'9', 'A'..'Z', 'a'..'z', '!', '#', '$', '%', '&', '(',
@@ -84,7 +84,7 @@ def to_base85(num):
 
 def to_base10(s, b=36):
     """
-    Convert a string s representing a number in base b back to an integer where base <= 85.
+    Convert a string `s` representing a number in base `b` back to an integer where base <= 85.
     """
 
     assert b <= len(b85_symbols) and b >= 2, 'Base must be in range(2, %d)' % (len(b85_symbols))
