@@ -26,6 +26,10 @@ from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
 
+#The future package makes the Python 3.x APIs available on Python 2.x
+from future.standard_library import install_aliases
+install_aliases()
+
 import logging
 
 import requests
@@ -74,13 +78,13 @@ def download_url(url, file_name=None, verify=True, timeout=10):
 
 def ping_url(url):
     """
-    Returns True is `url` is reachable.
+    Returns True if `url` is reachable.
     """
-    import urllib2
+    from urllib.request import urlopen
 
-    # FIXME: if there is no 200 HTTP status, then the ULR may not be reachable.
+    # FIXME: if there is no 200 HTTP status, then the URL may not be reachable.
     try:
-        urllib2.urlopen(url)
+        urlopen(url)
     except Exception:
         return False
     else:
